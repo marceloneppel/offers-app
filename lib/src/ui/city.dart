@@ -1,0 +1,50 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
+import 'package:flutter/material.dart';
+import 'package:offers/src/app/const.dart';
+import 'package:offers/src/bloc/bloc.dart';
+import 'package:offers/src/ui/main.dart';
+
+class City extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    Bloc bloc = BlocProvider.of<Bloc>(context);
+    return Scaffold(
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              selectCityText,
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            /*RaisedButton(
+              child: Text(
+                "Rio Negrinho - SC",
+              ),
+              onPressed: () {
+                bloc.updateCity("1058-42-15000");},
+            ),*/
+            RaisedButton(
+              child: Text(
+                "São Bento do Sul - SC",
+              ),
+              onPressed: () async {
+                await bloc.updateCity("1058-42-15802");
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (BuildContext context) {
+                    return Main();
+                  }),
+                  ModalRoute.withName('/'),
+                );
+              },
+            ),
+          ],
+          mainAxisAlignment: MainAxisAlignment.center,
+        ),
+      ),
+    );
+  }
+}
