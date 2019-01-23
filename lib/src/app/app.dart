@@ -2,7 +2,7 @@ import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:offers/src/app/const.dart';
 import 'package:offers/src/bloc/bloc.dart';
-import 'package:offers/src/ui/root.dart';
+import 'package:offers/src/ui/splash.dart';
 
 class OffersApp extends StatefulWidget {
   @override
@@ -23,7 +23,7 @@ class _OffersAppState extends State<OffersApp> {
         theme: ThemeData(
           primarySwatch: Colors.red,
         ),
-        home: Root(),
+        home: Splash(),
       ),
     );
   }

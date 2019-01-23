@@ -26,6 +26,7 @@ dependencies:
   pull_to_refresh: ^1.1.6
   rxdart: ^0.20.0
   shared_preferences: ^0.4.3
+  splashscreen: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -37,6 +38,10 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  fonts:
+    - family: Lobster
+      fonts:
+        - asset: fonts/lobster.otf
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

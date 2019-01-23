@@ -32,6 +32,11 @@ class Main extends StatelessWidget {
         ),
         title: Text(
           appName,
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: appNameFont,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
       body: SmartRefresher(

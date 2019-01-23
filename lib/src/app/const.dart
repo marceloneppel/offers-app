@@ -1,5 +1,6 @@
 const apiEndpoint = "https://offers-server.herokuapp.com/1.0.0/offers";
-const appName = "Ofertas";
+const appName = "Onde tem Oferta?";
+const appNameFont = "Lobster";
 const citySharedPreferenceId = "city";
 const errorText = "Erro";
 const loadingText = "Carregando...";
