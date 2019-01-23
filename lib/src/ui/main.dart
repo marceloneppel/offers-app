@@ -1,6 +1,7 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_offline/flutter_offline.dart';
+import 'package:intl/intl.dart';
 import 'package:offers/src/app/const.dart';
 import 'package:offers/src/bloc/bloc.dart';
 import 'package:offers/src/data/offer.dart';
@@ -8,6 +9,8 @@ import 'package:offers/src/ui/app_bar.dart';
 import 'package:offers/src/ui/city.dart';
 import 'package:offers/src/ui/loader.dart';
 import "package:pull_to_refresh/pull_to_refresh.dart";
+
+final currencyNumberFormat = NumberFormat("#,##0.00", "pt_BR");
 
 class Main extends StatelessWidget {
   final RefreshController _refreshController = RefreshController();
@@ -105,7 +108,7 @@ class Main extends StatelessWidget {
                                         snapshot.data[index].description,
                                       ),
                                       trailing: Text(
-                                        "R\$ ${snapshot.data[index].price}",
+                                        "R\$ ${currencyNumberFormat.format(snapshot.data[index].price)}",
                                       ),
                                     );
                                   },
