@@ -9,23 +9,21 @@ class City extends StatelessWidget {
   Widget build(BuildContext context) {
     Bloc bloc = BlocProvider.of<Bloc>(context);
     return Scaffold(
+      backgroundColor: Colors.red,
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
               selectCityText,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+              ),
             ),
             SizedBox(
               height: 10.0,
             ),
-            /*RaisedButton(
-              child: Text(
-                "Rio Negrinho - SC",
-              ),
-              onPressed: () {
-                bloc.updateCity("1058-42-15000");},
-            ),*/
             RaisedButton(
               child: Text(
                 "São Bento do Sul - SC",
