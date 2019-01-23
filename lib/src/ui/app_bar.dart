@@ -14,6 +14,9 @@ class OffersAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       actions: <Widget>[
         navigationItem != null ? navigationItem : Container(),
+        SizedBox(
+          width: 10.0,
+        ),
       ],
     );
   }
