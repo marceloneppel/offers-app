@@ -28,6 +28,7 @@ class City extends StatelessWidget {
               child: Text(
                 "São Bento do Sul - SC",
               ),
+              color: Colors.white,
               onPressed: () async {
                 await bloc.updateCity("1058-42-15802");
                 if (Navigator.canPop(context)) {
