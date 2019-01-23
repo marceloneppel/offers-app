@@ -1,4 +1,4 @@
-const apiEndpoint = "https://offers-server.herokuapp.com/1.0.0/offers";
+const apiEndpoint = "http://server.ondetemoferta.com.br/1.0.0/offers";
 const appName = "Onde tem Oferta?";
 const appNameFont = "Lobster";
 const citySharedPreferenceId = "city";
