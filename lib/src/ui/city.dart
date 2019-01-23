@@ -30,12 +30,14 @@ class City extends StatelessWidget {
               ),
               onPressed: () async {
                 await bloc.updateCity("1058-42-15802");
-                Navigator.pushAndRemoveUntil(
+                if (Navigator.canPop(context)) {
+                  Navigator.pop(context);
+                }
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (BuildContext context) {
                     return Main();
                   }),
-                  ModalRoute.withName('/'),
                 );
               },
             ),

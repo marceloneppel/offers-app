@@ -7,7 +7,6 @@ import 'package:offers/src/data/shared_preferences.dart';
 import 'package:rxdart/rxdart.dart';
 
 class Bloc implements BlocBase {
-
   Bloc();
 
   // City
@@ -23,7 +22,6 @@ class Bloc implements BlocBase {
     String city = await getCity();
     if (city != "") {
       _citySink.add(city);
-      await loadOffers();
     }
   }
 
@@ -31,7 +29,6 @@ class Bloc implements BlocBase {
     debugPrint("bloc updateCity called");
     await setCity(city);
     _citySink.add(city);
-    await loadOffers();
   }
 
   // Offers

@@ -15,6 +15,7 @@ class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Bloc bloc = BlocProvider.of<Bloc>(context);
+    bloc.loadOffers();
     return Scaffold(
       appBar: OffersAppBar(
         navigationItem: InkWell(
