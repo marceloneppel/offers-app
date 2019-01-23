@@ -33,7 +33,7 @@ class Bloc implements BlocBase {
 
   // Offers
   BehaviorSubject<List<Offer>> _offersController =
-      BehaviorSubject<List<Offer>>(seedValue: []);
+      BehaviorSubject<List<Offer>>();
 
   Sink<List<Offer>> get _offersSink => _offersController.sink;
 

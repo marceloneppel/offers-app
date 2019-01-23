@@ -52,65 +52,90 @@ class Main extends StatelessWidget {
                 debugPrint("main connectivity: $connectivity");
                 final bool connected = connectivity != ConnectivityResult.none;
                 debugPrint("main connected: $connected");
-                return Container(
-                  child: connected
-                      ? StreamBuilder(
-                          builder: (BuildContext context,
-                              AsyncSnapshot<List<Offer>> snapshot) {
-                            Widget widget;
-                            debugPrint(
-                                "main snapshot.connectionState: ${snapshot.connectionState}");
-                            switch (snapshot.connectionState) {
-                              case ConnectionState.active:
-                                debugPrint(
-                                    "main snapshot.hasError: ${snapshot.hasError}");
-                                debugPrint(
-                                    "main snapshot.hasData: ${snapshot.hasData}");
-                                if (snapshot.hasError) {
-                                  widget = Text(
-                                    "$errorText: ${snapshot.error}",
-                                  );
-                                } else if ((!snapshot.hasData) ||
-                                    (snapshot.data.length == 0)) {
-                                  widget = Text(
-                                    noOffersText,
-                                  );
-                                } else {
-                                  widget = ListView.builder(
-                                    shrinkWrap: true,
-                                    itemBuilder:
-                                        (BuildContext context, int index) {
-                                      return ListTile(
-                                        title: Text(
-                                          snapshot.data[index].title,
-                                        ),
-                                        subtitle: Text(
-                                          snapshot.data[index].description,
-                                        ),
-                                        trailing: Text(
-                                          "R\$ ${snapshot.data[index].price}",
-                                        ),
-                                      );
-                                    },
-                                    itemCount: snapshot.data.length,
-                                  );
-                                }
+                return connected
+                    ? StreamBuilder(
+                        builder: (BuildContext context,
+                            AsyncSnapshot<List<Offer>> snapshot) {
+                          Widget widget;
+                          debugPrint(
+                              "main snapshot.connectionState: ${snapshot.connectionState}");
+                          switch (snapshot.connectionState) {
+                            case ConnectionState.active:
+                              debugPrint(
+                                  "main snapshot.hasError: ${snapshot.hasError}");
+                              debugPrint(
+                                  "main snapshot.hasData: ${snapshot.hasData}");
+                              if (snapshot.hasError) {
                                 widget = Center(
-                                  child: widget,
+                                  child: Column(
+                                    children: <Widget>[
+                                      SizedBox(
+                                        height: 10.0,
+                                      ),
+                                      Text(
+                                        "$errorText: ${snapshot.error}",
+                                      ),
+                                    ],
+                                  ),
                                 );
-                                break;
-                              default:
-                                widget = Loader();
-                                break;
-                            }
-                            return widget;
-                          },
-                          stream: bloc.offersStream,
-                        )
-                      : Text(
-                          youAreNotConnectedText,
-                        ),
-                );
+                              } else if ((!snapshot.hasData) ||
+                                  (snapshot.data.length == 0)) {
+                                widget = Center(
+                                  child: Column(
+                                    children: <Widget>[
+                                      SizedBox(
+                                        height: 10.0,
+                                      ),
+                                      Text(
+                                        noOffersText,
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              } else {
+                                widget = ListView.builder(
+                                  shrinkWrap: true,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return ListTile(
+                                      title: Text(
+                                        snapshot.data[index].title,
+                                      ),
+                                      subtitle: Text(
+                                        snapshot.data[index].description,
+                                      ),
+                                      trailing: Text(
+                                        "R\$ ${snapshot.data[index].price}",
+                                      ),
+                                    );
+                                  },
+                                  itemCount: snapshot.data.length,
+                                );
+                              }
+                              widget = Center(
+                                child: widget,
+                              );
+                              break;
+                            default:
+                              widget = Center(
+                                child: Column(
+                                  children: <Widget>[
+                                    SizedBox(
+                                      height: 10.0,
+                                    ),
+                                    Loader(),
+                                  ],
+                                ),
+                              );
+                              break;
+                          }
+                          return widget;
+                        },
+                        stream: bloc.offersStream,
+                      )
+                    : Text(
+                        youAreNotConnectedText,
+                      );
               },
             ),
           ],

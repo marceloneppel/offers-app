@@ -45,8 +45,17 @@ class LoaderWithScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Loader(
-          top: top,
+        body: Center(
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 10.0,
+              ),
+              Loader(
+                top: top,
+              ),
+            ],
+          ),
         ),
       ),
     );
